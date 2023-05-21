@@ -1,0 +1,32 @@
+{
+  "groups": [
+    {
+      "name": "server",
+      "type": "com.shg.bmapi.configurations.properties.ConfigProperties",
+      "sourceType": "com.shg.bmapi.configurations.properties.ConfigProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "server.cron-expression",
+      "type": "java.lang.String",
+      "sourceType": "com.shg.bmapi.configurations.properties.ConfigProperties"
+    },
+    {
+      "name": "server.password",
+      "type": "java.lang.String",
+      "sourceType": "com.shg.bmapi.configurations.properties.ConfigProperties"
+    },
+    {
+      "name": "server.url",
+      "type": "java.lang.String",
+      "sourceType": "com.shg.bmapi.configurations.properties.ConfigProperties"
+    },
+    {
+      "name": "server.username",
+      "type": "java.lang.String",
+      "sourceType": "com.shg.bmapi.configurations.properties.ConfigProperties"
+    }
+  ],
+  "hints": []
+}

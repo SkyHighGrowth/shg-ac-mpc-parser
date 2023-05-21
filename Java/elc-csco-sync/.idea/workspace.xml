@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d5f97eab-31a5-45b4-892d-498083afc61d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.jpb/persistence-units.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HELP.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/AcMpcParserApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/CsvBeans/BmCsName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/CsvBeans/BmDisplay.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/CsvBeans/BmTechName.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/CsvBeans/CsvBean.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/CsvBeans/ImoAttribute.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/CsvBeans/ImoDataType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/CsvTransfer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/configuration/ThreadPoolTaskSchedulerConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/controlers/HomePageController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/controlers/MpcParserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/controlers/SchedulerController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/controlers/SyncController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/dao/CsLineDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/dao/MpcColumnDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/dao/MpcLineDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/dao/datatypes/IdPersistEnumType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/dao/datatypes/RightCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/dao/datatypes/RightCodeHbType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/dao/enums/PersistentEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/dao/enums/impl/DimensionBaseType.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/dao/enums/impl/DimensionTypes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/dtos/DimensionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/groups/GroupViewBase.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/groups/IGroup.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/groups/RightCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/models/CustomDataToDimMapping.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/models/DimensionModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/models/DimensionPossibleValueModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/models/Dimensions" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/models/NodeModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/repositories/DimensionPossibleValueRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/repositories/DimensionRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/repositories/NodeRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/services/CscoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/services/CscoSyncService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/services/MpcParserService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brandmaker/skyhigh/ac/mpcparser/subscribers/CustomStructuresSubscriber.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/configurations/CscoConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/configurations/CscoSecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/configurations/JwtAuthFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/configurations/WebSecurityConfiguration.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/configurations/properties/ConfigProperties.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/constants/DseEndPointConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/constants/FieldNameConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/constants/MPEndPoints.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/constants/MapsEndPointsConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/constants/TechnicalNameConstants.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/enums/InheritFromParentEnum.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/CustomAttributesDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/CustomStructureDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/CustomValueDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/HttpResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/LoginInfoDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/PimediasDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/RolesDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/TransactionLogsDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/UserDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/UserGroupDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/AssignmentDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/BaseDseObjectDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/BaseVariableTypeDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/ComfortGridColumnRestDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/ComfortGridDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/CreateLinkManagedTaskDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/CreateProcessDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/CreateProcessValuesDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/DataSheetAreaLightDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/DataSheetLightDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/DataSheetSectionLightDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/DseObjectDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/DseObjectTypeDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/DseObjectUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/DseObjectUpdateValueDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/DseObjectValueDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/DseUserGroupDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/DseUserGroupLightDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/GridRowDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/GridRowUpdateDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/JobAssignmentDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/JobCreateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/JobDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/JobState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/JobUpdateCreatorDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/JobUpdateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/LabelValueDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/LightWeightUser.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/ManagedTaskDataDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/SearchParamsDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/SearchVariableConditionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/UpdateGridRowDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/UserDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/VisibilityDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/metadata/AttributeValueDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/metadata/JobTypeCollectionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/metadata/JobTypeDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/metadata/MetadataLabelDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/metadata/MetadataTypeValueCustomStructureDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/metadata/MetadataTypeValueDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/metadata/MetadataTypeValueDTOCollection.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/metadata/MetadataTypeValueInnerCustomStructureDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/jobmanager/metadata/MetadataTypeVariableDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/CreatePeriodDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/CreatePlannerNodeDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/DefinedDimensionCollectionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/DefinedDimensionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/DimensionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/DimensionPossibleValueCollectionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/DimensionPossibleValueDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/DimensionUpdateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/DimensionUpdateValueDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/DimensionValueDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/DimensionsUpdateDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/NodeDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/NodeDimensionCollectionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/NodeDimensionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/NodeTaskCollectionDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/NodeTypeDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/ReadCustomValueDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/Sort.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/TaskDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/models/planner/TaskState.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/services/AuthorizationService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/services/JobManagerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/services/MarketingPlannerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/services/TestService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/services/TransactionsLogService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/utils/ArgumentVerifier.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/utils/DateUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/utils/HttpUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/utils/JobUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/utils/JwtUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/utils/MapsUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shg/bmapi/utils/RestUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/__logback-spring.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/csv files/AC_CustomStructures_2023-04-26.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/csv files/AC_MPC_Projects.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/csv files/AC_MPC_Projects_Transformed.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/csv files/AC_uap_projects_csv.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/csv files/AC_uap_projects_csv_transformed.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/csv files/temp.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xlsx files/AC_CustomStructures_2023-04-26.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/xlsx files/AC_MPC_Projects.xlsx" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="isToolWindowVisible" value="false" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
+  <component name="ProjectId" id="2PTphBl8mCvivbVZhFGUQteEv4h" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/GitHub/elc-runway-programs-update",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "project.validation",
+    "spring.configuration.checksum": "6fe6488f125f596e021f54d410701ad5"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "JAVA"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.shg.bmapi.models.jobmanager" />
+      <recent name="com.shg.bmapi.enums" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\GitHub\elc-csco-sync\Java\elc-csco-sync\src\main\resources\csv files" />
+      <recent name="C:\GitHub\elc-csco-sync\Java\elc-csco-sync\src\main\resources" />
+      <recent name="C:\GitHub\elc-csco-sync\Java\elc-csco-sync\src\main\java\com\shg\bmapi\constants" />
+      <recent name="C:\GitHub\elc-csco-sync\Java\elc-csco-sync\src\main\java\com\shg\bmapi\models\jobmanager" />
+      <recent name="C:\GitHub\elc-csco-sync\Java\elc-csco-sync\src\main\java\com\brandmaker\skyhigh\ac\mpcparser" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.shg.bmapi.models.jobmanager" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="ac-mpc-parser" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="ac-mpc-parser" />
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AcMpcParserApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" />
+      <module name="ac-mpc-parser" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.brandmaker.skyhigh.ac.mpcparser.AcMpcParserApplication" />
+      <extension name="software.aws.toolkits.jetbrains.core.execution.JavaAwsConnectionExtension">
+        <option name="credential" />
+        <option name="region" />
+        <option name="useCurrentConnection" value="false" />
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d5f97eab-31a5-45b4-892d-498083afc61d" name="Changes" comment="" />
+      <created>1683491043171</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1683491043171</updated>
+      <workItem from="1683491044827" duration="322000" />
+      <workItem from="1683492266241" duration="1271000" />
+      <workItem from="1683493867846" duration="599000" />
+      <workItem from="1683495783722" duration="599000" />
+      <workItem from="1683497732041" duration="38470000" />
+      <workItem from="1683805376752" duration="11368000" />
+      <workItem from="1683877388143" duration="120165000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/shg/bmapi/utils/RestUtils.java</url>
+          <line>149</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/shg/bmapi/utils/RestUtils.java</url>
+          <line>104</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="com.shg.bmapi.models.jobmanager.ComfortGridDto" memberName="columns" />
+        <PinnedItemInfo parentTag="com.shg.bmapi.models.jobmanager.DseObjectTypeDto" memberName="respectRestrictionsByOrgUnits" />
+        <PinnedItemInfo parentTag="com.shg.bmapi.models.jobmanager.CreateProcessDto" memberName="values" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/elc_csco_sync$AcMpcParserApplication.ic" NAME="AcMpcParserApplication Coverage Results" MODIFIED="1684417103121" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
+</project>

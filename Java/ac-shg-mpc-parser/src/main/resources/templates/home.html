@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml" lang="en">
+<head><title>CSCO Sync scheduler configuration</title></head>
+<link rel="icon" href="https://elc.brandmaker.com/skinning/file?file=images/favicon.ico&_cache_=_err_no_custom"/>
+<script src="./webjars/jquery/3.0.0/jquery.min.js"></script>
+<script src="./webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="./webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+<body>
+
+<div class="container">
+    <table class="table">
+        <caption></caption>
+        <thead class="thead-dark">
+        <tr class="d-flex justify-content-between">
+            <th scope="col" class="col-sm-6"><a href="#" class="btn text-light">CSCO Sync component configuration
+                properties</a></th>
+            <th scope="col" class="col-sm-6" style="text-align: right;"><p>Version: 0.2.8</p></th>
+        </tr>
+        </thead>
+        <body>
+        <tr>
+            <td colspan="2">
+                <form th:object="${configProperties}" method="POST" action="#"
+                      th:action="@{/api/v1/csco-sync/updateConfigurationProperties}">
+                    <div class="form-group-sm row">
+                        <label class="col-sm-12 col-form-label" for="serverUrl">
+                            Server URL</label>
+                        <div class="col-sm-6 input-group input-group-sm mb-3">
+                            <input type="text" class="form-control" th:field="*{url}" id="serverUrl" required/>
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-12 col-form-label" for="serverUsername">
+                            Username</label>
+                        <div class="col-sm-6 input-group input-group-sm mb-3">
+                            <input type="text" class="form-control" th:field="*{username}" id="serverUsername" required/>
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <label class="col-sm-12 col-form-label" for="serverPassword">
+                            Password</label>
+                        <div class="col-sm-6 input-group input-group-sm mb-3">
+                            <input type="text" class="form-control" th:field="*{password}" id="serverPassword" required/>
+                        </div>
+                    </div>
+                    <div class="form-group-sm row">
+                        <div class="col-sm-6 input-group input-group-sm mb-3 d-flex justify-content-between">
+                            <button type="button" class="btn btn-primary" id="sync" onclick="fireCscoTrigger()">
+                                CSCO Trigger
+                            </button>
+                            <button type="submit" class="btn btn-primary" id="update">Schedule process based on CS Times</button>
+                        </div>
+                    </div>
+                </form>
+            </td>
+        </tr>
+        </body>
+    </table>
+</div>
+<script>
+    function fireCscoTrigger() {
+        var oReq = new XMLHttpRequest();
+        oReq.open("POST", "/api/v1/csco-sync/cscotrigger");
+        oReq.setRequestHeader("Content-Type", "application/json");
+        oReq.onload = function () {
+            if (oReq.status == 200 || oReq.status == 201) {
+                window.alert("Csco sync trigger is fired!")
+            } else {
+                window.alert("Csco sync trigger failed!")
+            }
+        }
+        oReq.send();
+    }
+</script>
+</body>
+</html>

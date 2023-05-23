@@ -18,6 +18,8 @@ import com.shg.bmapi.utils.HttpUtils;
 import com.shg.bmapi.utils.JobUtils;
 import com.shg.bmapi.utils.RestUtils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -34,6 +36,7 @@ public class JobManagerService {
 
     private final ConfigProperties properties;
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(JobManagerService.class);
 
 
     public JobManagerService(final RestTemplate restTemplate, final ObjectMapper objectMapper,
@@ -66,25 +69,32 @@ public class JobManagerService {
 
     public List<JobDTO> findJobBySearchParams(final SearchParamsDTO searchParams) {
 
-        final Map<Object, Object> response = RestUtils.sendPostRequest(
-                restTemplate,
-                MediaType.APPLICATION_JSON,
-                HttpUtils.createUrl(properties.getUrl(), DseEndPointConstants.DSE_REST_JOBS_SEARCH),
-                searchParams
-        );
+        try {
+            final Map<Object, Object> response = RestUtils.sendPostRequest(
+                    restTemplate,
+                    MediaType.APPLICATION_JSON,
+                    HttpUtils.createUrl(properties.getUrl(), DseEndPointConstants.DSE_REST_JOBS_SEARCH),
+                    searchParams
+            );
 
-        final Object jobs;
-        if (response != null) {
-            jobs = response.get(DseEndPointConstants.VALUES_KEY);
-        } else {
-            jobs = null;
+            final Object jobs;
+            if (response != null) {
+                jobs = response.get(DseEndPointConstants.VALUES_KEY);
+            } else {
+                jobs = null;
+            }
+
+
+            return this.objectMapper.convertValue(
+                    jobs,
+                    TypeFactory.defaultInstance().constructCollectionType(List.class, JobDTO.class)
+            );
         }
-
-
-        return this.objectMapper.convertValue(
-                jobs,
-                TypeFactory.defaultInstance().constructCollectionType(List.class, JobDTO.class)
-        );
+        catch (RuntimeException e)
+        {
+            LOGGER.error(e.getMessage(),e);
+            return null;
+        }
     }
 
 
@@ -148,30 +158,46 @@ public class JobManagerService {
     }
 
     public DseObjectDto updateJob(final DseObjectUpdateDto dseObjectUpdateDto) {
+        try {
 
-        final Map<Object, Object> responseBody = RestUtils.sendPostRequest(
-                restTemplate,
-                MediaType.APPLICATION_JSON,
-                HttpUtils.createUrl(properties.getUrl(), DseEndPointConstants.DSE_REST_INTERNAL_DSE_OBJECT_UPDATE),
-                dseObjectUpdateDto
-        );
+            final Map<Object, Object> responseBody = RestUtils.sendPostRequest(
+                    restTemplate,
+                    MediaType.APPLICATION_JSON,
+                    HttpUtils.createUrl(properties.getUrl(), DseEndPointConstants.DSE_REST_INTERNAL_DSE_OBJECT_UPDATE),
+                    dseObjectUpdateDto
+            );
 
-        return this.objectMapper.convertValue(responseBody, DseObjectDto.class);
+            return this.objectMapper.convertValue(responseBody, DseObjectDto.class);
+        }
+        catch (RuntimeException e)
+        {
+            LOGGER.error(e.getMessage(),e);
+            return null;
+        }
     }
 
     public Collection<GridRowDto> getGridRowsByJobOrdinalIdAndVariableInstanceId(Integer ordinalId, Integer variableInstanceId)
     {
-        final Collection<Object> responseBodyTypeDefinition = RestUtils.sendGetRequestCRT(
-                restTemplate,
-                HttpUtils.createUrl(properties.getUrl(), String.format(DseEndPointConstants.DSE_REST_INTERNAL_FIND_GRID_BY_ORIDINALID_AND_VARIABLEIID,ordinalId,variableInstanceId))
-        );
-        Collection<GridRowDto> gridRowDtoCollection=new ArrayList<>();
-        for (Object item:responseBodyTypeDefinition
-             ) {
-            gridRowDtoCollection.add(this.objectMapper.convertValue(item, GridRowDto.class));
+        try {
+            final Collection<Object> responseBodyTypeDefinition = RestUtils.sendGetRequestCRT(
+                    restTemplate,
+                    HttpUtils.createUrl(properties.getUrl(), String.format(DseEndPointConstants.DSE_REST_INTERNAL_FIND_GRID_BY_ORIDINALID_AND_VARIABLEIID, ordinalId, variableInstanceId))
+            );
+
+            Collection<GridRowDto> gridRowDtoCollection=new ArrayList<>();
+            for (Object item:responseBodyTypeDefinition
+            ) {
+                gridRowDtoCollection.add(this.objectMapper.convertValue(item, GridRowDto.class));
+            }
+
+            return gridRowDtoCollection;
+        }
+        catch (RuntimeException e)
+        {
+            LOGGER.error(e.getMessage(),e);
+            return null;
         }
 
-        return gridRowDtoCollection;
     }
 
     public DseObjectTypeDto getDseObjectTypesByJobTypeId(Integer jobTypeId)
@@ -189,18 +215,31 @@ public class JobManagerService {
 
     public Boolean updateGridRowByJobOrdinalIdAndVariableInstanceIdAndRowId(String updatedGridDto, Integer ordinalId, Integer variableInstanceId, Integer rowInstanceId)
     {
-        ResponseEntity<Object> response=RestUtils.sendPutRequest(restTemplate,MediaType.APPLICATION_JSON,
-                HttpUtils.createUrl(properties.getUrl(),String.format(DseEndPointConstants.DSE_REST_UPDATE_GRID_BY_ORIDINALID_AND_VARIABLEIID_AND_ROWID,ordinalId,variableInstanceId,rowInstanceId)),updatedGridDto);
+        try {
+            ResponseEntity<Object> response = RestUtils.sendPutRequest(restTemplate, MediaType.APPLICATION_JSON,
+                    HttpUtils.createUrl(properties.getUrl(), String.format(DseEndPointConstants.DSE_REST_UPDATE_GRID_BY_ORIDINALID_AND_VARIABLEIID_AND_ROWID, ordinalId, variableInstanceId, rowInstanceId)), updatedGridDto);
 
-       return this.objectMapper.convertValue(response.getBody(),Boolean.class);
+            return this.objectMapper.convertValue(response.getBody(), Boolean.class);
+        }
+        catch (RuntimeException e)
+        {
+            return false;
+        }
     }
     public GridRowDto createNewGridRowByJobOrdinalIdAndVariableInstanceId(Object updatedGridDto,Integer ordinalId,Integer variableInstanceId)
     {
-        System.out.println(new Gson().toJson(updatedGridDto));
-        Object object=RestUtils.sendPostRequestREO(restTemplate,MediaType.APPLICATION_JSON,
-                HttpUtils.createUrl(properties.getUrl(),String.format(DseEndPointConstants.DSE_REST_CREATE_GRID_BY_ORIDINALID_AND_VARIABLEIID,ordinalId,variableInstanceId)),updatedGridDto);
+        //System.out.println(new Gson().toJson(updatedGridDto));
+        try {
+            Object object = RestUtils.sendPostRequestREO(restTemplate, MediaType.APPLICATION_JSON,
+                    HttpUtils.createUrl(properties.getUrl(), String.format(DseEndPointConstants.DSE_REST_CREATE_GRID_BY_ORIDINALID_AND_VARIABLEIID, ordinalId, variableInstanceId)), updatedGridDto);
 
-        return this.objectMapper.convertValue(object, GridRowDto.class);
+            return this.objectMapper.convertValue(object, GridRowDto.class);
+        }
+        catch (RuntimeException e)
+        {
+            LOGGER.error(e.getMessage(),e);
+            return null;
+        }
     }
 
     // FROM OBJECT SERVICE
@@ -278,12 +317,19 @@ public class JobManagerService {
     }
 
     public MetadataTypeValueDTOCollection getCustomStructureValuesByName(String name) {
-        final Map<Object, Object> responseBodyTypeVariable = RestUtils.sendGetRequest(
-                restTemplate,
-                HttpUtils.createUrl(properties.getUrl(), String.format(DseEndPointConstants.DATA_STRUCTURE_REST_CUSTOM_OBJECT_STRUCTURE, name))
-        );
+        try {
+            final Map<Object, Object> responseBodyTypeVariable = RestUtils.sendGetRequest(
+                    restTemplate,
+                    HttpUtils.createUrl(properties.getUrl(), String.format(DseEndPointConstants.DATA_STRUCTURE_REST_CUSTOM_OBJECT_STRUCTURE, name))
+            );
 
-        return this.objectMapper.convertValue(responseBodyTypeVariable, MetadataTypeValueDTOCollection.class);
+            return this.objectMapper.convertValue(responseBodyTypeVariable, MetadataTypeValueDTOCollection.class);
+        }
+        catch (RuntimeException e)
+        {
+            LOGGER.error(e.getMessage(),e);
+            return null;
+        }
     }
 
 

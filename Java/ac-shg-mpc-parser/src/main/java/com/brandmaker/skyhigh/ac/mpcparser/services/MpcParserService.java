@@ -99,6 +99,10 @@ public class MpcParserService {
     private String getMpcValueFromCustomStructure(Map<String, ArrayList<String>> headersLookupMap, int pos, String mpcLineDao, Map<String, String> customObjectsMap) {
         String coMapKey = headersLookupMap.get("BM CS Name").get(pos);
         MetadataTypeValueDTOCollection bMCustomStructure = jobManagerService.getCustomStructureValuesByName(coMapKey);
+        if(bMCustomStructure==null)
+        {
+            return null;
+        }
         List<MetadataTypeValueDTO> bMCustomStructureValues = bMCustomStructure.getData();
         for (MetadataTypeValueDTO customStrValue : bMCustomStructureValues
         ) {
@@ -136,7 +140,15 @@ public class MpcParserService {
 
 
         // get all MPC Jobs on system
+
         List<JobDTO> mpcJobResultList = jobManagerService.findJobBySearchParams(searchParamsDTO);
+
+        if (mpcJobResultList==null)
+        {
+            LOGGER.error("CANNOT FIND MPC WITH GIVEN IMO ID: "+imoAttributeValue);
+            return  false;
+        }
+
         JobDTO mpcOldJob = mpcJobResultList.get(0);
 
         //check if field is part of some grid
@@ -145,6 +157,11 @@ public class MpcParserService {
         if (jobsGridRowVariableInstanceId != null) {
             gridUpdateFlag = 1;
             Collection<GridRowDto> gridRows = jobManagerService.getGridRowsByJobOrdinalIdAndVariableInstanceId(mpcOldJob.getOrdinalNumber(), jobsGridRowVariableInstanceId);
+            if(gridRows==null)
+            {
+                LOGGER.error("CANNOT FIND MPC GRID WITH GIVEN MPC ORDINALID: "+mpcOldJob.getOrdinalNumber()+" AND JOBS GRID VARIABLE INSTANCE ID: "+jobsGridRowVariableInstanceId);
+                return false;
+            }
             List<GridRowDto> gridRowsList = new ArrayList<>(gridRows);
             if (gridRowsList.isEmpty()) // is empty
             {
@@ -161,6 +178,11 @@ public class MpcParserService {
                 }
                 System.out.println(json);
                 GridRowDto gridRowDto = jobManagerService.createNewGridRowByJobOrdinalIdAndVariableInstanceId(json, mpcOldJob.getOrdinalNumber(), jobsGridRowVariableInstanceId);
+                if(gridRowDto==null)
+                {
+                    LOGGER.error("CANNOT CREATE GRID ROW WITH JOB ORDINALID: "+mpcOldJob.getOrdinalNumber()+" AND GRID ROW VARIABLE INSTANCEID: "+jobsGridRowVariableInstanceId);
+                    return false;
+                }
                 System.out.println(gridRowDto);
                 return true;
             } else {
@@ -180,8 +202,11 @@ public class MpcParserService {
                 System.out.println(json);
 
                 if (jobManagerService.updateGridRowByJobOrdinalIdAndVariableInstanceIdAndRowId(json, mpcOldJob.getOrdinalNumber(), jobsGridRowVariableInstanceId, gridRowsList.get(0).getRowInstanceId())) {
-                    System.out.print("Grid row update successful");
-
+                    LOGGER.info("GRID ROW WITH JOB ORDINALID: "+mpcOldJob.getOrdinalNumber()+" AND JOBS GRID ROW VARIABLE INSTANCE ID: "+jobsGridRowVariableInstanceId+" UPDATED SUCCESSFULLY");
+                }
+                else {
+                    LOGGER.info("GRID ROW WITH JOB ORDINALID: "+mpcOldJob.getOrdinalNumber()+" AND JOBS GRID ROW VARIABLE INSTANCE ID: "+jobsGridRowVariableInstanceId+" UPDATED UNSUCCESSFULLY");
+                    return false;
                 }
                 return true;
             }
@@ -218,7 +243,7 @@ public class MpcParserService {
                     LOGGER.info("UPDATE FROM CS SUCCESSFUL!");
                 } else {
                     LOGGER.error("UPDATE FROM CS UNSUCCESSFUL!");
-
+                    return false;
                 }
                 break;
             case "MULTIINPUTLINE":
@@ -234,6 +259,8 @@ public class MpcParserService {
                 break;
         }
         if (userFlag == 1) {
+            LOGGER.error("USER FIELD DETECTED, SKIPPING IT: "+headersLookupMap.get("BM Tech Name").get(pos));
+
             return false;
         }
 
@@ -241,9 +268,15 @@ public class MpcParserService {
         dseObjectUpdateDto.setValues(dseObjectUpdateValueDtos);
         System.out.println(new Gson().toJson(dseObjectUpdateDto));
         DseObjectDto updatedJob = jobManagerService.updateJob(dseObjectUpdateDto);
+        if(updatedJob==null)
+        {
+            LOGGER.error("ERROR WHEN UPDATING JOB WITH ORIDNALID: "+mpcOldJob.getOrdinalNumber());
+            return false;
+        }
         System.out.println(new Gson().toJson(updatedJob));
         loggerService.log(mpcLineDao[pos]);
 
+        LOGGER.info("MPC JOB FIELD WITH TECH NAME: "+headersLookupMap.get("BM Tech Name").get(pos)+" SUCCESSFULLY UPDATED");
         return true;
     }
 

@@ -1,0 +1,3 @@
+[submodule "Java/elc-mp-program-linker"]
+	path = Java/elc-mp-program-linker
+	url = /home/shg_dev/Playground/elc-mp-program-linker/elc-mp-program-linker.git/Java/elc-mp-program-linker

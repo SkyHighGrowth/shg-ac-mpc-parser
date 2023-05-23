@@ -109,7 +109,7 @@ public class RestUtils {
         final HttpEntity<Void> requestEntity = new HttpEntity<>(headers);
 
         return restTemplate.exchange(
-                        "https://aircanada-dev.brandmakerinc.com/dse/rest/internal/jobs/3791/grids/4005/rows",
+                        endpoint,
                         HttpMethod.GET,
                         requestEntity,
                         COLLECTION_RESPONSE_TYPE

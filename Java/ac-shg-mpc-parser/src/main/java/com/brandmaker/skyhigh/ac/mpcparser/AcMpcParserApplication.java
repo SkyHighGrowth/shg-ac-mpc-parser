@@ -6,7 +6,6 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication(scanBasePackages = {"com.brandmaker.skyhigh.ac.mpcparser", "com.shg.bmapi"}, exclude = SecurityAutoConfiguration.class)
-@EnableScheduling
 public class AcMpcParserApplication {
 
 

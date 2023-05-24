@@ -26,8 +26,16 @@ import java.util.*;
 public class MpcParserService {
     private final JobManagerService jobManagerService;
     private final AuthorizationService authorizationService;
-    private static Map<Integer, String> createdGridsMap = new HashMap<>();
 
+
+    private static Map<Integer, String> CreatedGridsMap = new HashMap<>();
+
+    private static final String OriginalCsvFile="C:\\GitHub\\ac-shg-mpc-parser\\shg-ac-mpc-parser\\Java\\ac-shg-mpc-parser\\src\\main\\resources\\csv files\\AC_uap_projects_csv.csv";
+    private static final String TransformedCsvFile="C:\\GitHub\\ac-shg-mpc-parser\\shg-ac-mpc-parser\\Java\\ac-shg-mpc-parser\\src\\main\\resources\\csv files\\AC_uap_projects_csv_transformed.csv";
+    private static final String CustomObjectsFile="C:\\GitHub\\ac-shg-mpc-parser\\shg-ac-mpc-parser\\Java\\ac-shg-mpc-parser\\src\\main\\resources\\csv files\\AC_CustomStructures_2023-04-26.csv";
+
+
+    private static final String OutputCsvFile="C:\\GitHub\\ac-shg-mpc-parser\\shg-ac-mpc-parser\\Java\\ac-shg-mpc-parser\\src\\main\\resources\\csv files\\AC_MPC_Projects_Output_File.csv";
     private static final Logger LOGGER = LoggerFactory.getLogger(MpcParserService.class);
     private final ObjectMapper objectMapper;
     private final LoggerService loggerService;
@@ -38,7 +46,7 @@ public class MpcParserService {
         this.authorizationService = authorizationService;
         this.objectMapper = objectMapper;
         this.loggerService = loggerService;
-        loggerService.setFilename("C:\\GitHub\\elc-csco-sync\\Java\\elc-csco-sync\\src\\main\\resources\\csv files\\AC_MPC_Projects_Output_File");
+        loggerService.setFilename(OutputCsvFile);
     }
 
     @SuppressWarnings({"rawtypes", "unchecked"})
@@ -46,10 +54,10 @@ public class MpcParserService {
 
         try {
             authorizationService.initializeAuthorization();
-            Map<String, ArrayList<String>> headersMap = new HashMap<>(Objects.requireNonNull(readAndMapCsvHeaders("C:\\GitHub\\elc-csco-sync\\Java\\elc-csco-sync\\src\\main\\resources\\csv files\\AC_MPC_Projects.csv")));
-            Map<String, String> customObjectsMap = new HashMap<>(createMapFromCSV("C:\\GitHub\\elc-csco-sync\\Java\\elc-csco-sync\\src\\main\\resources\\csv files\\AC_CustomStructures_2023-04-26.csv"));
-            Map<Integer, String> fieldImoIdMap = new HashMap<>(transformCsvFile("C:\\GitHub\\elc-csco-sync\\Java\\elc-csco-sync\\src\\main\\resources\\csv files\\AC_uap_projects_csv.csv", "C:\\GitHub\\elc-csco-sync\\Java\\elc-csco-sync\\src\\main\\resources\\csv files\\AC_uap_projects_csv_transformed.csv"));
-            updateMpcObjects("C:\\GitHub\\elc-csco-sync\\Java\\elc-csco-sync\\src\\main\\resources\\csv files\\AC_uap_projects_csv_transformed.csv", headersMap, customObjectsMap, fieldImoIdMap);
+            Map<String, ArrayList<String>> headersMap = new HashMap<>(Objects.requireNonNull(readAndMapCsvHeaders(OriginalCsvFile)));
+            Map<String, String> customObjectsMap = new HashMap<>(createMapFromCSV(CustomObjectsFile));
+            Map<Integer, String> fieldImoIdMap = new HashMap<>(transformCsvFile(OriginalCsvFile, TransformedCsvFile));
+            updateMpcObjects(TransformedCsvFile, headersMap, customObjectsMap, fieldImoIdMap);
         } catch (CsvException | IOException e) {
             LOGGER.error(e.getMessage(), e);
         }
@@ -66,7 +74,8 @@ public class MpcParserService {
             while ((mpc = reader.readNext()) != null) {
                 // Process the current row
 
-                findThenUpdateMpcObject(mpc, headersMap, pos, customObjectsMap, fieldImoIdMap);
+                boolean res=findThenUpdateMpcObject(mpc, headersMap, pos, customObjectsMap, fieldImoIdMap);
+                loggerService.logMpcLineResult(mpc,res,fieldImoIdMap.get(pos));
                 pos++;
             }
 
@@ -126,7 +135,7 @@ public class MpcParserService {
         searchVariableConditionMpcJobs.setOperator("AND");
 
         SearchVariableConditionDTO searchVariableConditionMpcJobImoAttribute = new SearchVariableConditionDTO();
-        String imoAttributeValue=headersLookupMap.get("IMO Attribute").get(pos);
+        String imoAttributeValue=fieldImoIdMap.get(pos);
         searchVariableConditionMpcJobImoAttribute.setValue(imoAttributeValue);
         //searchVariableConditionMpcJobImoAttribute.setValue("313");
         searchVariableConditionMpcJobImoAttribute.setName("imo_system_id");
@@ -189,7 +198,7 @@ public class MpcParserService {
                 // update grid row
                 GridRowUpdateDto gridRowUpdateDto = new GridRowUpdateDto();
                 Map<String, String> values = new HashMap<>();
-                values.put(headersLookupMap.get("BM Tech Name").get(pos), createValueWithEscChar("2023-05-16"));
+                values.put(headersLookupMap.get("BM Tech Name").get(pos), createValueWithEscChar(mpcLineDao[pos]));
                 String json = null;
                 gridRowUpdateDto.setValues(values);
                 try {
@@ -234,7 +243,7 @@ public class MpcParserService {
             return false;
         }
 
-        switch (bmDataType.trim().toUpperCase()) {
+        switch (bmDataType.toUpperCase().replaceAll(" ","")) {
             case "SINGLESELECT":
             case "MULTISELECT":
                 if (getMpcValueFromCustomStructure(headersLookupMap, pos, mpcLineDao[pos], customObjectsMap) != null) {
@@ -274,7 +283,6 @@ public class MpcParserService {
             return false;
         }
         System.out.println(new Gson().toJson(updatedJob));
-        loggerService.log(mpcLineDao[pos]);
 
         LOGGER.info("MPC JOB FIELD WITH TECH NAME: "+headersLookupMap.get("BM Tech Name").get(pos)+" SUCCESSFULLY UPDATED");
         return true;
@@ -315,12 +323,17 @@ public class MpcParserService {
                     if (i == 0) {
                         keyValue = nextLine[i];
                     } else {
+                        if(i==1)
+                        {
+                            continue;
+                        }
                         values.add(nextLine[i]);
                     }
                 }
                 System.out.println();
 
                 rowCount++;
+
                 headersMap.put(keyValue, values);
             }
 
